@@ -7,6 +7,10 @@ app = flask.Flask(__name__)
 conn = psycopg2.connect(host = "tuffi.db.elephantsql.com", database = "ewayqilc", user = "ewayqilc", password = "c_3fHeJM-wn6440Q4ZU0F9hf7dyDu9ba")
 cur = conn.cursor()
 
+@app.route('/', methods=['GET'])
+def home():
+    return '<h1>hello world!</h1>'
+    
 @app.route('/personas', methods=['GET'])
 def get_personas():
     personas = []
