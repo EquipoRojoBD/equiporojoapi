@@ -29,3 +29,12 @@ def get_personas():
         'msg': 'personas recibidas correctamente',
         'personas': personas
     })
+
+@app.route('/personas', methods=['POST'])
+def add_persona():
+    sql = f"""insert into per.persona(nss, nombre, telefono) 
+    values({request.json['nss']}, '{request.json['nombre']}, {request.json['telefono']})"""
+    cur.execute(sql)
+    return jsonify({
+        'msg': 'persona agregada correctamente'
+    })
