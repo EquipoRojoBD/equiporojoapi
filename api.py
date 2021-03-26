@@ -25,4 +25,7 @@ def get_personas():
             'nombre': row[2],
             'telefono': row[3]
         })
-    return jsonify(personas)
+    return jsonify({
+        'msg': 'personas recibidas correctamente',
+        'data': personas
+    })
