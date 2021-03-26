@@ -16,7 +16,7 @@ def home():
 @app.route('/personas', methods=['GET'])
 def get_personas():
     personas = []
-    sql = "select * from persona"
+    sql = "select * from per.persona"
     cur.execute(sql)
     for row in cur.fetchall():
         personas.append({
