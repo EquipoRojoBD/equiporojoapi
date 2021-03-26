@@ -27,5 +27,5 @@ def get_personas():
         })
     return jsonify({
         'msg': 'personas recibidas correctamente',
-        'data': personas
+        'personas': personas
     })
