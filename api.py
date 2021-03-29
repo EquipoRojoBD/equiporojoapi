@@ -1,9 +1,9 @@
-import flask
+from flask import Flask
 from flask import request, jsonify
 import psycopg2
 from flask_cors import CORS
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 CORS(app)
 
 conn = psycopg2.connect(host = "tuffi.db.elephantsql.com", database = "ewayqilc", user = "ewayqilc", password = "c_3fHeJM-wn6440Q4ZU0F9hf7dyDu9ba")
