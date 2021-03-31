@@ -32,10 +32,16 @@ def get_personas():
 
 @app.route('/personas', methods=['POST'])
 def add_persona():
-    sql = f"""insert into per.persona(nss, nombre, telefono) 
-    values({request.json['nss']}, '{request.json['nombre']}', {request.json['telefono']})"""
-    cur.execute(sql)
-    conn.commit()
-    return jsonify({
-        'msg': 'persona agregada correctamente'
-    })
+    data = (request.json['nss'], request.json['nombre'], request.json['telefono'])
+    sql = "insert into per.persona(nss, nombre, telefono) values(%s, %s, %s)"
+    try:
+        cur.execute(sql, data)
+        conn.commit()
+        return jsonify({
+            'msg': 'persona agregada correctamente'
+        })
+    except Exception as error:
+        return jsonify({
+            'msg': 'ha ocurrido un error',
+            'error': str(error)
+        }), 400
